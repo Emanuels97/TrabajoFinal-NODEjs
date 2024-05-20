@@ -54,3 +54,18 @@ body {
 .items:hover .img-wrapper img {
   transform: translateY(5px);
 }
+
+#box-usd{
+  background: rgb(5, 216, 40);
+}
+
+#box-ars{
+  background: rgb(36, 222, 247);
+}
+
+#box-btc{
+  background: rgb(238, 226, 59);
+}
+#box-eth{
+  background: rgb(211, 45, 211);
+}
