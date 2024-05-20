@@ -54,25 +54,17 @@ body {
   transform: translateY(5px);
 }
 
-/* SECCION CONTACTO */
-.contacto {
-  background-color: #1d1e22;
-  padding: 140px 0 100px 0;
-  color: #e6e6e6;
-  text-align: center;
+#box-usd{
+  background: rgb(5, 216, 40);
 }
-.contacto .contenido-seccion {
-  max-width: 1000px;
-  margin: auto;
-  padding: 0 10x;
+
+#box-ars{
+  background: rgb(36, 222, 247);
 }
-.contacto .contenido-seccion .fila {
-  display: flex;
-  justify-content: space-around;
+
+#box-btc{
+  background: rgb(238, 226, 59);
 }
-.contacto .contenido-seccion .fila .col {
-  margin-top: 50px;
-}
-.contacto .contenido-seccion .fila .col h2 {
-  color: #0000ff;
+#box-eth{
+  background: rgb(211, 45, 211);
 }
