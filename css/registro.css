@@ -1,0 +1,65 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(https://blog.bitso.com/wp-content/uploads/2023/10/cuales-son-las-criptomonedas-mas-populares.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+form {
+    width: 600px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(9px);
+    color: #fff;
+    border-radius: 12px;
+}
+.box-form input:focus {
+  border: 2px solid rgba(255, 255, 255, .2);
+  box-shadow: 0 0 0 0.1rem rgba(255, 255, 255, .2); 
+}
+.form-control{
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 10px 45px 10px 20px;
+  }
+
+  .form-control:focus{
+    background: transparent;
+    color: #fff;
+  }
+
+.btn{
+    width: 40%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+  }
+
+.link {
+    text-decoration: none;
+    color: #fff;
+}
+
+.link:hover{
+    text-decoration: underline;
+    color: aqua;
+  }
