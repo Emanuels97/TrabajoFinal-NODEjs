@@ -10,7 +10,7 @@ const DB_CONFIG = {
   port: 3306
 };
 
-const BD = new Sequelize(DB_CONFIG.database, DB_CONFIG.username, DB_CONFIG.password, {
+const DB = new Sequelize(DB_CONFIG.database, DB_CONFIG.username, DB_CONFIG.password, {
   host: DB_CONFIG.host,
   dialect: DB_CONFIG.dialect,
   port: DB_CONFIG.port
@@ -33,14 +33,14 @@ const createDatabase = async () => {
   }
 };
 
-BD.initialize = async () => {
+DB.initialize = async () => {
   await createDatabase();
   try {
-    await BD.authenticate();
+    await DB.authenticate();
     console.log('Conexión a la base de datos establecida correctamente.');
   } catch (error) {
     console.error('No se pudo conectar a la base de datos:', error);
   }
 };
 
-module.exports = BD;
+module.exports = DB;

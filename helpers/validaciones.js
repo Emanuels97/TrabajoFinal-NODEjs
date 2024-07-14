@@ -1,27 +1,32 @@
-(function () {
-  'use strict'
-  var forms = document.querySelectorAll('.needs-validation')
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
+export function validarCamposRegistro(nombre, apellido, usuario, email, contraseña , verificacion) {
+  if (!nombre || !apellido || !usuario || !email || !contraseña || !verificacion) {
+      showError('Todos los campos son obligatorios.');
+      return false;
+  }
+  return true;
+}
 
-        form.classList.add('was-validated')
+export function validarContraseñas(contraseña, verificacion) {
+  if (contraseña !== verificacion) {
+      showError('Las contraseñas no coinciden.');
+      return false;
+  }
+  return true;
+}
 
-        var password = document.getElementById('inputPw');
-        var confirmPassword = document.getElementById('inputPwVerificacion');
-        var messageContainer = document.getElementById('messageContainer');
+export function validarCamposLogin(usuario, contraseña) {
+  if (!usuario || !contraseña) {
+      showError('Por favor, completa todos los campos.');
+      return false;
+  }
+  return true;
+}
 
-        if (password.value != confirmPassword.value) {
-          event.preventDefault()
-          event.stopPropagation()
-          messageContainer.innerHTML = '<span>Las contraseñas ingresadas no coinciden</span>';
-        } else {
-          messageContainer.innerHTML = '';
-        }
-      }, false)
-    })
-})()
+function showError(message) {
+  const errorElement = document.getElementById('error-message');
+  if (errorElement) {
+      errorElement.textContent = message;
+  } else {
+      alert(message);
+  }
+}

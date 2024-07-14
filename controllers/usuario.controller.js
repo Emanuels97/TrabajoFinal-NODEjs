@@ -75,4 +75,24 @@ userCtrl.deleteUsuario = async (req, res) => {
   }
 };
 
+userCtrl.login = async (req, res) => {
+  const { usuario, contraseña } = req.body;
+
+  try {
+    const user = await Usuario.findOne({ where: { usuario } });
+
+    if (!user) {
+      return res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+    
+    if (user.contraseña !== contraseña) {
+      return res.status(401).json({ message: 'Contraseña incorrecta' });
+    }
+
+    res.status(200).json({ message: 'Usuario autenticado', user });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = userCtrl;

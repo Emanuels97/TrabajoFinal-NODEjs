@@ -1,7 +1,9 @@
 const express = require('express');
-const BD = require('./database.js');
+const DB = require('./database.js');
 const app = express();
+const cors = require('cors');
 
+app.use(cors());
 app.use(express.json());
 app.use('/usuario', require('./routes/usuario.routes.js'));
 
@@ -9,9 +11,9 @@ const PORT = process.env.PORT || 3030;
 
 const inicializarDatabase = async () => {
   try {
-    await BD.initialize();
+    await DB.initialize();
     console.log('Conexión exitosa a la base de datos');
-    await BD.sync({ force: false });
+    await DB.sync({ force: false });
     console.log('Base de datos y tablas creadas');
   } catch (error) {
     console.error('Error al inicializar la base de datos:', error);
