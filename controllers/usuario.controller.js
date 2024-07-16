@@ -47,7 +47,7 @@ userCtrl.createUsuario = async (req, res) => {
 userCtrl.updateUsuario = async (req, res) => {
   try {
     const usuario = await Usuario.findByPk(req.params.id);
-    if (condition) {
+    if (usuario) {
       await Usuario.update(req.body, {
         where: { id: req.params.id },
       });
@@ -75,9 +75,10 @@ userCtrl.deleteUsuario = async (req, res) => {
   }
 };
 
+// Login usuario + busqueda si existe
 userCtrl.login = async (req, res) => {
   const { usuario, contraseña } = req.body;
-
+  console.log("Cuerpo de la solicitud:", usuario,contraseña);
   try {
     const user = await Usuario.findOne({ where: { usuario } });
 

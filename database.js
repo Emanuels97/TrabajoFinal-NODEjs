@@ -1,7 +1,8 @@
 const { Sequelize } = require('sequelize');
 const mysql = require('mysql2/promise');
 
-const DB_CONFIG = {
+// Configuración de la base de datos
+const CONFIG = {
   database: "cac2024",
   username: "root",
   password: "fj123",
@@ -10,36 +11,38 @@ const DB_CONFIG = {
   port: 3306
 };
 
-const DB = new Sequelize(DB_CONFIG.database, DB_CONFIG.username, DB_CONFIG.password, {
-  host: DB_CONFIG.host,
-  dialect: DB_CONFIG.dialect,
-  port: DB_CONFIG.port
+// Inicialización de Sequelize
+const DB = new Sequelize(CONFIG.database, CONFIG.username, CONFIG.password, {
+  host: CONFIG.host,
+  dialect: CONFIG.dialect,
+  port: CONFIG.port
 });
 
-const createDatabase = async () => {
-  const connection = await mysql.createConnection({
-    host: DB_CONFIG.host,
-    user: DB_CONFIG.username,
-    password: DB_CONFIG.password,
+// Función para crear la base de datos si no existe
+const crearBaseDeDatos = async () => {
+  const conexionBD = await mysql.createConnection({
+    host: CONFIG.host,
+    user: CONFIG.username,
+    password: CONFIG.password,
   });
-
   try {
-    await connection.query(`CREATE DATABASE IF NOT EXISTS ${DB_CONFIG.database}`);
+    await conexionBD.query(`CREATE DATABASE IF NOT EXISTS ${CONFIG.database}`);
     console.log('Base de datos creada o ya existente');
   } catch (error) {
-    console.error('Error al crear la base de datos:', error);
+    console.error('Error al crear la base de datos:', error.message);
   } finally {
-    await connection.end();
+    await conexionBD.end();
   }
 };
 
-DB.initialize = async () => {
-  await createDatabase();
+// Inicialización de la base de datos
+DB.inicializar = async () => {
+  await crearBaseDeDatos();
   try {
     await DB.authenticate();
     console.log('Conexión a la base de datos establecida correctamente.');
   } catch (error) {
-    console.error('No se pudo conectar a la base de datos:', error);
+    console.error('No se pudo conectar a la base de datos:', error.message);
   }
 };
 

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const userCtrl = require('../controllers/usuario.controller');
 
-router.delete('/login', userCtrl.login);
+router.post('/login', userCtrl.login);
 router.get('/', userCtrl.getUsuarios);
 router.post('/registro', userCtrl.createUsuario);
 router.get('/:id', userCtrl.getUsuarioById);
